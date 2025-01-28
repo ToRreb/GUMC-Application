@@ -1,3 +1,6 @@
+name: gumc_application
+description: A new Flutter project
+
 environment:
   sdk: '>=3.0.0 <4.0.0'
   flutter: ">=3.0.0"
@@ -5,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.24.2
+  firebase_core: ^2.15.1
   firebase_auth: ^4.15.3
   cloud_firestore: ^4.13.6
   firebase_messaging: ^14.7.10
@@ -26,4 +29,4 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   mockito: ^5.4.2
-  bloc_test: ^9.1.3 
+  bloc_test: ^9.1.3
