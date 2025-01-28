@@ -5,7 +5,6 @@ import '../services/firebase_service.dart';
 import '../services/auth_service.dart';
 import 'package:intl/intl.dart';
 import 'package:get_it/get_it.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:your_app/widgets/loading_overlay.dart';
 import 'package:your_app/widgets/error_view.dart';
 

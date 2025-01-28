@@ -3,6 +3,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:your_app/main.dart' as app;
 
 void main() {
+  var IntegrationTestWidgetsFlutterBinding;
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end-to-end test', () {

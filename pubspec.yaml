@@ -8,9 +8,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.15.1
+  firebase_core: ^2.24.2
   firebase_auth: ^4.15.3
   cloud_firestore: ^4.13.6
+  provider: ^6.1.1
   firebase_messaging: ^14.7.10
   firebase_storage: ^11.6.0
   firebase_analytics: ^10.8.0
@@ -23,6 +24,8 @@ dependencies:
   url_launcher: ^6.2.4
   image_picker: ^1.0.7
   file_picker: ^6.1.1
+  firebase_storage_mocks: ^0.6.1
+  fake_cloud_firestore: ^2.5.2
 
 dev_dependencies:
   flutter_test:

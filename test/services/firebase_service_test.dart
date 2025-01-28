@@ -1,4 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gumc_application/models/team_event.dart';
+import 'package:gumc_application/services/firebase_service.dart';
 import 'package:mockito/mockito.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_storage_mocks/firebase_storage_mocks.dart';
@@ -23,7 +25,7 @@ void main() {
     mockPerformance = MockPerformanceService();
     mockAnalytics = MockAnalyticsService();
     mockCache = MockCacheService();
-    
+
     firebaseService = FirebaseService.withDependencies(
       firestore: fakeFirestore,
       storage: mockStorage,
@@ -63,7 +65,18 @@ void main() {
     });
 
     test('getTeamEvents should return stream of events', () async {
-      final event = TeamEvent(/* ... */);
+      final event = TeamEvent(
+        id: '1',
+        teamId: 'team1',
+        churchId: 'church1',
+        title: 'Test Event',
+        description: 'Test Description',
+        startTime: DateTime.now(),
+        location: 'Test Location',
+        creatorId: 'user1',
+        creatorName: 'Test User',
+        createdAt: DateTime.now(),
+      );
       
       await fakeFirestore
           .collection('churches')
@@ -71,7 +84,7 @@ void main() {
           .collection('ministry_teams')
           .doc('team1')
           .collection('events')
-          .add(event.toMap());
+          .add(event.toMap()); // Ensure `toMap` converts the event to Firestore-friendly format.
 
       final events = await firebaseService
           .getTeamEvents('church1', 'team1')
@@ -83,4 +96,4 @@ void main() {
 
     // Add more tests...
   });
-} 
+}

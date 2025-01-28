@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import '../../test/services/firebase_service_test.dart';
 import '../models/church.dart';
 import '../models/announcement.dart';
 import '../models/event.dart';
@@ -858,6 +859,8 @@ class FirebaseService {
 
     await batch.commit();
   }
+
+  static FirebaseService withDependencies({required firestore, required storage, required MockPerformanceService performance, required MockAnalyticsService analytics, required MockCacheService cache}) {}
 }
 
 class FirebaseOperationException implements Exception {

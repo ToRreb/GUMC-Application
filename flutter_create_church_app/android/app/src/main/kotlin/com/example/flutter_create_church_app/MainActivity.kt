@@ -1,5 +1,7 @@
-package com.example.flutter_create_church_app
+package com.example.gumc_app
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity()
+class MainActivity: FlutterActivity() {
+}
+
