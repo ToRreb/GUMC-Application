@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin(churchId) {
+      return isAuthenticated() && 
+             exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.churchId == churchId;
+    }
+
+    // Church rules
+    match /churches/{churchId} {
+      allow read: if true;  // Anyone can read church info
+      allow write: if isAdmin(churchId);
+      
+      // Nested collections
+      match /announcements/{announcementId} {
+        allow read: if true;
+        allow write: if isAdmin(churchId);
+      }
+      
+      match /events/{eventId} {
+        allow read: if true;
+        allow write: if isAdmin(churchId);
+      }
+      
+      match /schedules/{scheduleId} {
+        allow read: if true;
+        allow write: if isAdmin(churchId);
+      }
+    }
+    
+    // Admin rules
+    match /admins/{userId} {
+      allow read: if isAuthenticated() && request.auth.uid == userId;
+      allow write: if false;  // Only through admin SDK
+    }
+  }
+} 
